@@ -1,9 +1,9 @@
 while True:
-    date=raw_input("Enter the date in the ddmmyy format:")
+    date=raw_input("Enter the date in the ddmmyyyy format:")
     cent=int(input("Enter the century:"))
     day=date[0:2:1]
     month=date[2:4:1]
-    year=str(cent-1)+date[4:6:1]
+    year=str(cent-1)+date[6:8:1]
     if ((int(day)<=31) and (int(month)<=12)):
         months={'01':'January','02':'February','03':'March','04':'April','05':'May','06':'June','07':'July','08':'August','09':'September','10':'October',
             '11':'November','12':'December'}

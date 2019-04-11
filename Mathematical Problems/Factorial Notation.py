@@ -3,7 +3,7 @@ while True:
     r=1
     for i in range(a,0,-1):
         r=r*i
-    print r
-    
+    print r,
+    print
       
 
