@@ -1,7 +1,8 @@
+numChances=6
 print """Welcome to PyLingo. The rules of the game are:
 1. The length of the secret word and guess must be five.
 2. Repetition of characters isn't allowed for both the secret word and the guess.
-3. You have to guess the word within 7 chances.
+3. You have to guess the word within """,numChances,""" chances.
 4. If you didn't get the word, your guess will be displayed in the following way:
    i. If any of the character of the guess exists in the secret word and at the same position,
       then it will be displayed within [ ].
@@ -15,15 +16,14 @@ condition=True
 import random
 while condition:
     L=["tiger","liger","manes","names","watch","snake","wrath","lingo","frank","money","night","might","drunk","young",
-       "broke","poker","joker","table","maths","black","niger","flash","tired","slash","latch","patch","match","right",
-       "front","slash"]
+       "broke","poker","joker","table","maths","black","niger","flash","tired","slash","latch","patch","match","right","front"]
     word=L[random.randint(0,len(L)-1)]
     word=word.lower()
     lw=list(word)
     if len(set(word))==5 and word.isalpha()==True and len(word)==5:
         guess=str()
         count=1
-        while guess!=word and count!=8:
+        while guess!=word and count!=numChances+1:
             guess=raw_input("Guess"+str(count)+":")
             guess=guess.lower()
             lg=list(guess)
@@ -37,16 +37,18 @@ while condition:
                     elif i not in lw:
                         print i,
                 print
-            count=count+1
+                count=count+1
             if guess.isalpha()==False:
                 print ("The guess should be made of characters only.")
             elif len(guess)!=5:
-                print ("Length of the guess must be five.")
+                print ("Length of the guess must be five. Try again")
+                continue
             elif len(set(guess))!=5:
-                print ("Repetition of characters isn't allowed.")
+                print ("Repetition of characters isn't allowed. Try again")
+                continue
         if guess==word:
             print ("Gotcha! You got the word.")
-        elif count==8:
+        elif count==numChances+1:
             print "Sorry! you have run out of chances. The secret word was:",word
         
 
